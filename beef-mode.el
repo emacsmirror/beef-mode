@@ -55,7 +55,7 @@
 
 ;;; Code:
 
-(defvar beef-mode-syntax-table
+(defconst beef-mode-syntax-table
   (let ((table (make-syntax-table)))
     (modify-syntax-entry ?/ ". 124b" table)
     (modify-syntax-entry ?* ". 23" table)
@@ -65,8 +65,8 @@
     table))
 
 
-(defun beef-keywords()
-  "Beef programming language keywords."
+(defconst beef-keywords
+  ;;"Beef programming language keywords."
   '("alignof" "append" "as" "asm" "base" "break"
     "case" "catch" "checked" "continue" "const"
     "default" "defer" "delegate" "delete" "do"
@@ -83,8 +83,8 @@
     "private" "protected" "public" "readonly"
     "rettype" "this" "typealias" "let"))
 
-(defun beef-primitive-data-types()
-  "Beef programming language primitive data types."
+(defconst beef-primitive-data-types
+  ;;"Beef programming language primitive data types."
   `(
     ;; Integer types
     "int" "int8" "int16" "int32" "int64"
@@ -103,8 +103,8 @@
     "bool"))
 
 
-(defun beef-operators()
-  "Beef programming language operators."
+(defconst beef-operators
+  ;;"Beef programming language operators."
   '(
     ;; Primary operators
     "." ".."
@@ -174,13 +174,13 @@
     "^"
     ))
 
-(defun beef-font-lock-keywords ()
-  "Beef programming language font lock keywords."
+(defconst beef-font-lock-keywords
+  ;;"Beef programming language font lock keywords."
   (list
    `("\\<\\(true\\|false\\)\\>" . font-lock-constant-face)
-   `(,(regexp-opt (beef-primitive-data-types) 'symbols) . font-lock-type-face)
-   `(,(regexp-opt (beef-keywords) 'symbols) . font-lock-keyword-face)
-   `(,(regexp-opt (beef-operators)) . font-lock-builtin-face)))
+   `(,(regexp-opt beef-primitive-data-types 'symbols) . font-lock-type-face)
+   `(,(regexp-opt beef-keywords 'symbols) . font-lock-keyword-face)
+   `(,(regexp-opt beef-operators) . font-lock-builtin-face)))
 
 ;;;###autoload
 (define-derived-mode beef-mode prog-mode "Beef"
