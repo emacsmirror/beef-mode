@@ -66,7 +66,6 @@
 
 
 (defconst beef-keywords
-  ;;"Beef programming language keywords."
   '("alignof" "append" "as" "asm" "base" "break"
     "case" "catch" "checked" "continue" "const"
     "default" "defer" "delegate" "delete" "do"
@@ -84,7 +83,6 @@
     "rettype" "this" "typealias" "let"))
 
 (defconst beef-primitive-data-types
-  ;;"Beef programming language primitive data types."
   `(
     ;; Integer types
     "int" "int8" "int16" "int32" "int64"
@@ -104,7 +102,6 @@
 
 
 (defconst beef-operators
-  ;;"Beef programming language operators."
   '(
     ;; Primary operators
     "." ".."
@@ -175,7 +172,6 @@
     ))
 
 (defconst beef-font-lock-keywords
-  ;;"Beef programming language font lock keywords."
   (list
    `("\\<\\(true\\|false\\)\\>" . font-lock-constant-face)
    `(,(regexp-opt beef-primitive-data-types 'symbols) . font-lock-type-face)
