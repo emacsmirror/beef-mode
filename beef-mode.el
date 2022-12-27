@@ -168,12 +168,16 @@
     "..." "..<" "...^"
 
     ;; Index from end operator
-    "^"
-    ))
+    "^"))
+
+
+(defconst beef-constants
+  '("true" "false"))
+
 
 (defconst beef-font-lock-keywords
   (list
-   `("\\<\\(true\\|false\\)\\>" . font-lock-constant-face)
+   `(,(regexp-opt beef-constants 'words) . font-lock-constant-face)
    `(,(regexp-opt beef-primitive-data-types 'symbols) . font-lock-type-face)
    `(,(regexp-opt beef-keywords 'symbols) . font-lock-keyword-face)
    `(,(regexp-opt beef-operators) . font-lock-builtin-face)))
@@ -182,7 +186,9 @@
 (define-derived-mode beef-mode prog-mode "Beef"
   "A major mode for the Beef programming language."
   :syntax-table beef-mode-syntax-table
-  (setq-local font-lock-defaults '(beef-font-lock-keywords)))
+  (setq-local font-lock-defaults '(beef-font-lock-keywords))
+  (setq-local comment-start "// ")
+  (setq-local comment-end ""))
 
 ;;;###autoload
 (add-to-list 'auto-mode-alist '("\\.bf\\'" . beef-mode))
